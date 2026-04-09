@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-os-bg: #0f1115;
+  --color-os-surface: #1a1d24;
+  --color-os-border: #2a2e38;
+  --color-os-primary: #3b82f6;
+  --color-os-accent: #10b981;
+  --color-os-danger: #ef4444;
+  --color-os-text: #e2e8f0;
+  --color-os-muted: #94a3b8;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-os-bg);
+  color: var(--color-os-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Custom Scrollbar for OS apps */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-os-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-os-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-os-muted);
+}
