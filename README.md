@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# FazerOS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FazerOS is a comprehensive, web-based desktop environment and operating system built with React, TypeScript, Vite, and Electron. It bridges the gap between a simulated web UI and a real operating system by integrating true backend system commands and offering a fully bootable ISO generator.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Interactive Desktop Environment**: A clean, professional UI with window management (drag, resize) using `react-rnd`.
+- **Real System Integration**: Built-in applications interact with the underlying host OS via Electron IPC.
+- **Built-in Applications**:
+  - **Terminal**: Execute real system commands directly from the UI.
+  - **Network Analyzer**: Real network diagnostics (Ping, Tracert, Netstat, ARP).
+  - **Port Scanner**: TCP port scanning capabilities.
+  - **File Explorer & Task Manager**: Manage files and monitor system resources.
+  - **Other Utilities**: Calculator, Web Browser, Settings, and Security Quarantine.
+- **Bootable OS Generator**: Includes scripts to generate a standalone, Debian-based Live ISO (`fazeros-bootable.iso`) running FazerOS in Kiosk mode.
 
-## React Compiler
+## 🚀 Getting Started (Development)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- `npm` or `yarn`
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/urbanyl/FazerOs.git
+   cd FazerOs
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. Start the development server (React):
+   ```bash
+   npm run dev
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. Start Electron (in a separate terminal):
+   ```bash
+   npm run electron:dev
+   ```
+
+## 🛠️ Building the Application
+
+To build the Electron application for your current operating system (Windows/Linux):
+
+```bash
+npm run build
+npm run electron:build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 💿 Generating a Bootable FazerOS ISO (Bare-Metal)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+FazerOS can be built into a real, bootable operating system using the provided `os-builder` scripts. This requires a Linux environment (or WSL) with root privileges.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+For detailed instructions on generating the ISO and booting it on physical or virtual machines (BIOS/UEFI), please refer to the [Boot OS Installation Guide](docs/BOOT_OS_INSTALLATION.md).
+
+## 📄 License
+
+This project is licensed under the MIT License. Copyright (c) 2026 Fazer.
